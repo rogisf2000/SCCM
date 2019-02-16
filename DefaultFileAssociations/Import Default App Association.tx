@@ -1,0 +1,1 @@
+cmd.exe /c DISM.exe /online /Import-DefaultAppAssociations:$mySourcePath\DefaultApps.xml 2`>`&1 `>`> $myLogfile
