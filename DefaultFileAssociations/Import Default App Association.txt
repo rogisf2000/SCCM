@@ -1,1 +1,6 @@
-cmd.exe /c DISM.exe /online /Import-DefaultAppAssociations:$mySourcePath\DefaultApps.xml 2`>`&1 `>`> $myLogfile
+Create file associations on a reference machine using the GUI
+Export the file associations using Dism /Online /Export-DefaultAppAssociations:<path to xml file>\AppAssociations.xml
+Create SCCM package with AppAssociations.xml
+Create a run command step in the task sequence and copy the AppAssociations.xml file by typing:
+xcopy "AppAssociations.xml" "C:\Windows\System32" /D /E /C /I /Q /H /R /Y /S
+Create a run command step with following: DISM.exe /online /Import-DefaultAppAssociations:C:\Windows\System32\AppAssociations.xml
